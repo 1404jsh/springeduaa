@@ -1,25 +1,20 @@
-/* 읽기모드 버튼 */
-const replyBtn  = document.getElementById("replyBtn");
-const modifyBtn = document.getElementById("modifyBtn");
-const deleteBtn = document.getElementById("deleteBtn");
-/* 수정모드 버튼 */
+/**
+ * 
+ */
+const writeBtn  = document.getElementById("writeBtn");
 const cancelBtn = document.getElementById("cancelBtn");
-const saveBtn  	= document.getElementById("saveBtn");
-/* 공통 버튼 */
 const listBtn   = document.getElementById("listBtn");
+const writeFrm  = document.getElementById("writeFrm");
 
-if(replyBtn) 	replyBtn.addEventListener("click", replyBtn_f);
-if(modifyBtn) cancelBtn.addEventListener("click", modifyBtn_f);
-if(deleteBtn) listBtn.addEventListener("click", deleteBtn_f);
+writeBtn.addEventListener("click", writeBtn_f);
+cancelBtn.addEventListener("click", cancelBtn_f);
+listBtn.addEventListener("click", listBtn_f);
 
-if(cancelBtn) cancelBtn.addEventListener("click", cancelBtn_f);
-if(saveBtn) 	writeBtn.addEventListener("click", saveBtn_f);
-if(listBtn) 	listBtn.addEventListener("click", listBtn_f);
-
-//저장
-function modifyBtn_f(e) {
+//등록
+function writeBtn_f(e) {
 	e.preventDefault();
   console.log("등록");
+    windiw.location.href = "./list";
 
   //1) 유효성체크
 	if(!checkValidation()) {

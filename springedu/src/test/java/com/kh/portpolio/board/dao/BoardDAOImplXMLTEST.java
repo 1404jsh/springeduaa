@@ -17,6 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.kh.portfolio.board.dao.BoardDAO;
 import com.kh.portfolio.board.dao.BoardDAOImplXML;
 import com.kh.portfolio.board.vo.BoardCategoryVO;
+import com.kh.portfolio.board.vo.BoardFileVO;
 import com.kh.portfolio.board.vo.BoardVO;
 
 @ExtendWith(SpringExtension.class)
@@ -68,9 +69,28 @@ void list() {
 }
 @Test
 @DisplayName("게시글 보기")
+@Disabled
 void view() {
 	String bnum = "121";
 	BoardVO boardVO = boardDAO.view(bnum);
 	logger.info(boardVO.toString());
+}
+@Test
+@DisplayName("첨부파일 조회")
+@Disabled
+void getFiles() {
+	String bnum = "126";
+	List<BoardFileVO> list = boardDAO.getFiles(bnum);
+	list.stream().forEach(System.out::println);
+	Assertions.assertEquals(3, list.size());
+}
+@Test
+@DisplayName("조회수 +1증가")
+void updateBhit() {
+	String bnum = "127";
+	int preBhit = boardDAO.view(bnum).getBhit();
+	boardDAO.updateBhit(bnum);
+	int postBhit = boardDAO.view(bnum).getBhit();
+	Assertions.assertEquals(postBhit, preBhit+1);
 }
 }

@@ -19,5 +19,8 @@ public interface BoardDAO {
 	List<BoardVO> list();
 	//파일첨부
 	int addFile(BoardFileVO boardFileVO);
-	
+	//첨부파일조회
+	List<BoardFileVO> getFiles(String bnum);
+	//조회수 +1증가
+	void updateBhit(String bnum);
 }

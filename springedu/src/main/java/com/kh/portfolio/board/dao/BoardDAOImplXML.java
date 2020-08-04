@@ -62,5 +62,18 @@ public class BoardDAOImplXML implements BoardDAO {
 	 result = sqlSession.delete("mappers.BoardDAO-mapper.addFile", boardFileVO);
 		return result;
 	}
+//첨부파일조회
+	@Override
+	public List<BoardFileVO> getFiles(String bnum) {
+	List<BoardFileVO> list = null;
+	list = sqlSession.selectList("mappers.BoardDAO-mapper.getFiles", Long.valueOf(bnum));
+		return list;
+	}
+//조회수 +1증가
+	@Override
+	public void updateBhit(String bnum) {
+		
+		sqlSession.update("mappers.BoardDAO-mapper.updateBhit", Long.valueOf(bnum));
+	}
 
 }

@@ -88,4 +88,28 @@ where   t1.bcategory = t2.cid
 
 </select>
 
+<!-- 첨부파일 조회 -->
+<select id="getFiles"
+				 parameterType="Long" 
+				 resultType="com.kh.portfolio.board.vo.BoardFileVO">
+		select
+						FID,
+						BNUM,
+						FNAME,
+						FSIZE,
+						FTYPE,
+						FDATA,
+						CDATE,
+						UDATE
+		from 		board_upload_file
+		where 	bnum=${bnum}
+</select>
+<!-- 조회수 +1증가 -->
+<update id="updateBhit" 
+				parameterType="Long">
+				update  board
+				set 		bhit = bhit+1
+				where 	bnum= #{bnum}
+</update>
+
 </mapper>
