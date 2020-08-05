@@ -1,6 +1,7 @@
 package com.kh.portpolio.board.dao;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.inject.Inject;
 
@@ -31,7 +32,26 @@ public class BoardDAOImplXMLTEST {
 	@Inject
 	
 	BoardDAO boardDAO;
-
+	@Test
+	@DisplayName("게시판 카테고리 읽어오기")
+	void getCategory() {
+	List<BoardCategoryVO> list = boardDAO.getCategory();
+//	//case1) 일반 for문
+//	for(int i =0; i<list.size(); i++) {
+//	logger.info(list.get(i).toString());
+//	}
+//	//case2) 향상된 for문
+//	for(BoardCategoryVO boardCategoryVO: list) {
+//		logger.info(boardCategoryVO.toString());
+//	}
+//	//case3)스트림 사용
+//	list.stream().forEach(boardCategoryVO->{
+//		System.out.println(boardCategoryVO);
+//	});
+	//case4)스트림 사용(단축)
+	list.stream().forEach(System.out::println);	
+	}
+	
 	@Test
 	@DisplayName("게시글 작성")
 	@Disabled
@@ -86,6 +106,7 @@ void getFiles() {
 }
 @Test
 @DisplayName("조회수 +1증가")
+@Disabled
 void updateBhit() {
 	String bnum = "127";
 	int preBhit = boardDAO.view(bnum).getBhit();

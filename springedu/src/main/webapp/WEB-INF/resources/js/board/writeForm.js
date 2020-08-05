@@ -14,7 +14,6 @@ listBtn.addEventListener("click", listBtn_f);
 function writeBtn_f(e) {
 	e.preventDefault();
   console.log("등록");
-    windiw.location.href = "./list";
 
   //1) 유효성체크
 	if(!checkValidation()) {
@@ -34,7 +33,7 @@ function cancelBtn_f(e) {
 function listBtn_f(e) {
   console.log("목록");
   //목록리스트로 이동
-  windiw.location.href = "./list";
+  location.href = "list";
 }
 
 //유효성 체크
